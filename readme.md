@@ -1,4 +1,4 @@
-# CUR-INF-create
+# CUR_INF_create
 
 鼠标个性化安装文件`.inf`自动生成脚本
 
