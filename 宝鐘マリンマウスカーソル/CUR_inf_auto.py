@@ -3,17 +3,7 @@ import re
 
 CUR_DIR = __file__.split(os.sep)[-2]
 
-def get_zip_file(input_path:str, result:list):
-    files = os.listdir(input_path)
-    for file in files:
-        if os.path.isdir(file):
-            #result.append(file)
-            #get_zip_file(file, result)
-            pass
-        else:
-            result.append(file)
-ls = []
-get_zip_file(os.getcwd(),ls)
+ls = list(filter(lambda file: not os.path.isdir(file), os.listdir(os.getcwd())))
 ls = list(filter(lambda name:bool(re.findall(r'(^.*\.ani$)|(^.*\.cur$)', name)),ls))[:15]
 ls.sort()
 
