@@ -18,7 +18,7 @@
 
 ## 注意1
 
-由于执行的安装命令是：`rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 ./Install.inf`可能只在**Windows7**版本可以使用
+由于执行的安装命令是：`rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 ./Install.inf`可能只在**部分Windows版本**可以使用
 
 
 
