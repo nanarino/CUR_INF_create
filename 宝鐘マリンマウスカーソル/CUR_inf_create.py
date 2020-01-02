@@ -8,7 +8,7 @@ ls = list(filter(lambda name:bool(re.findall(r'(^.*\.ani$)|(^.*\.cur$)', name)),
 ls.sort()
 
 Strings_list = ['pointer','help','work','busy','cross','text','hand','unavailiable','vert','horz','dgn1','dgn2','move','alternate','link']
-Strings_list = list(map(lambda h,f: h + ' = "' + f + '"\n', Strings_list,ls))
+Strings_list = list(map(lambda h,f: h + ' = "' + f + '"\r\n', Strings_list,ls))
 
 inf_head = r'''[Version]
 signature="$CHICAGO$"
@@ -46,14 +46,14 @@ HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Runonce\Setup\","",,"rundll32.ex
 
 with open('Install.inf','w') as inf:
     inf.write(inf_head)
-    inf.write('[Scheme.Cur]\n')
+    inf.write('[Scheme.Cur]\r\n')
     for i in ls:
-        inf.write('"' + i + '"\n')
-    inf.write('\n')
-    inf.write('[Strings]\n')
-    inf.write('CUR_DIR = "Cursors\\' + CUR_DIR + '"\n')
-    inf.write('SCHEME_NAME = "' + CUR_DIR + '"\n')
-    inf.write('SCHEME_DESCRIPTION = "' + CUR_DIR + '"\n')
+        inf.write('"' + i + '"\r\n')
+    inf.write('\r\n')
+    inf.write('[Strings]\r\n')
+    inf.write('CUR_DIR = "Cursors\\' + CUR_DIR + '"\r\n')
+    inf.write('SCHEME_NAME = "' + CUR_DIR + '"\r\n')
+    inf.write('SCHEME_DESCRIPTION = "' + CUR_DIR + '"\r\n')
     inf.writelines(Strings_list)
 
 input("Click on the file Install.inf right mouse button, the shortcut menu to choose - to install")
