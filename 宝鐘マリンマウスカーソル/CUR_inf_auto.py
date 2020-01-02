@@ -59,7 +59,7 @@ with open('Install.inf','w') as inf:
 
 
 i = input("Do you want to install it now?")
-if(i == "")or(i == "Y"):
+if(i.strip() == "")or(i == "Y"):
     #auto
     import subprocess
     s = subprocess.Popen("rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 ./Install.inf", shell=True)
