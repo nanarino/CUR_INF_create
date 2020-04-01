@@ -3,12 +3,19 @@ import re
 
 CUR_DIR = os.getcwd().split(os.sep)[-1]
 
-ls = list(filter(lambda file: not os.path.isdir(file), os.listdir(os.getcwd())))
-ls = list(filter(lambda name:bool(re.findall(r'(^.*\.ani$)|(^.*\.cur$)', name)),ls))[:15]
+ls = list(filter(lambda file: not os.path.isdir(file),
+                 os.listdir(os.getcwd())))
+ls = list(
+    filter(lambda name: bool(re.findall(r'(^.*\.ani$)|(^.*\.cur$)', name)),
+           ls))[:15]
 ls.sort()
 
-Strings_list = ['pointer','help','work','busy','cross','text','hand','unavailiable','vert','horz','dgn1','dgn2','move','alternate','link']
-Strings_list = list(map(lambda h,f: h + ' = \"' + f + '\"\r\n', Strings_list,ls))
+Strings_list = [
+    'pointer', 'help', 'work', 'busy', 'cross', 'text', 'hand', 'unavailiable',
+    'vert', 'horz', 'dgn1', 'dgn2', 'move', 'alternate', 'link'
+]
+Strings_list = list(
+    map(lambda h, f: h + ' = \"' + f + '\"\r\n', Strings_list, ls))
 
 inf_head = r'''[Version]
 signature="$CHICAGO$"
@@ -44,7 +51,7 @@ HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Runonce\Setup\","",,"rundll32.ex
 
 '''
 
-with open('Install.inf','w',newline='') as inf:
+with open('Install.inf', 'w', newline='') as inf:
     inf.write(inf_head)
     inf.write('[Scheme.Cur]\r\n')
     for i in ls:
@@ -56,14 +63,16 @@ with open('Install.inf','w',newline='') as inf:
     inf.write('SCHEME_DESCRIPTION = \"' + CUR_DIR + '\"\r\n')
     inf.writelines(Strings_list)
 
-
-
 i = input("Do you want to install it now?")
-if(i.strip() in ["", "Y", "y"]):
+if (i.strip() in ["", "Y", "y"]):
     #auto
     import subprocess
-    s = subprocess.Popen("rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 ./Install.inf", shell=True)
+    s = subprocess.Popen(
+        "rundll32 syssetup,SetupInfObjectInstallAction DefaultInstall 128 ./Install.inf",
+        shell=True)
     s.wait()
     input("Install Success")
 else:
-    input("Click on the file Install.inf right mouse button, the shortcut menu to choose - to install")
+    input(
+        "Click on the file Install.inf right mouse button, the shortcut menu to choose - to install"
+    )
