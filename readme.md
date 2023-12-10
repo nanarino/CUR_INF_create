@@ -1,6 +1,6 @@
 # CUR_INF_create
 
-window10的鼠标个性化安装文件 `.inf` 自动生成python3脚本，用于减少重复的机械性操作
+Windows10的鼠标个性化安装文件 `.inf` 自动生成python3脚本，用于减少重复的机械性操作
 
 
 
